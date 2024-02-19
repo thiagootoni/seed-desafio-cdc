@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/authors")
+// 3 pts
 public class AuthorController {
 
     private final AuthorService authorService;

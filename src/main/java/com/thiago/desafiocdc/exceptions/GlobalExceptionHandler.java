@@ -21,4 +21,11 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status).body(validationError);
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<StandardError> IllegalArgumentHandler(IllegalArgumentException e, HttpServletRequest request){
+        var errorMessage = e.getMessage();
+        HttpStatus status = HttpStatus.UNPROCESSABLE_ENTITY;
+
+        return ResponseEntity.status(status).body(new StandardError(String.valueOf(status.value()), errorMessage));
+    }
 }

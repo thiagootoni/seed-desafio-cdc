@@ -1,5 +1,5 @@
 package com.thiago.desafiocdc.exceptions;
 
-public record StandardError(String error,
+public record StandardError(String code,
                             String Message) {
 }

@@ -4,10 +4,10 @@ import org.springframework.validation.FieldError;
 
 import java.util.List;
 
-public record ValidationError(String error, String message, List<FieldMessage> errors) {
+public record ValidationError(String code, String message, List<FieldMessage> errors) {
 
-    public static ValidationError from(String error, String message, List<FieldError> errors) {
-        return new ValidationError(error, message, fillErrors(errors));
+    public static ValidationError from(String code, String message, List<FieldError> errors) {
+        return new ValidationError(code, message, fillErrors(errors));
     }
 
     private static List<FieldMessage> fillErrors(List<FieldError> failedValidations) {

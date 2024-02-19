@@ -1,6 +1,7 @@
 package com.thiago.desafiocdc.models;
 
 import com.thiago.desafiocdc.dtos.AuthorRequest;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
@@ -19,12 +20,15 @@ public class Author {
     private String name;
     @Email(message = "Email should be valid")
     @NotBlank(message = "Email is mandatory")
+    @Column(unique=true)
     private String email;
     @NotBlank(message = "Description is mandatory")
     @Size(max = 400, message = "Description can't exceed 400 characters")
     private String description;
     @NotNull(message = "Instant can't be null")
     private Instant createdAt;
+
+    private Author(){}
 
     private Author(UUID id, String name, String email, String description, Instant createdAt) {
         this.id = id;
